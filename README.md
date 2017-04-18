@@ -38,8 +38,9 @@ Repeat untile you're not satisfied about the cleaning of your repo
 
 * Get all the objects in your repo    
 ```
+git rev-list --objects --all  > toremove
+``` 
 
-* Get all the objects in your repo    
 
 * Modify remove_git.sh uncommenting the second for loop : 
 ```
@@ -50,6 +51,17 @@ for i in $(cat $1  | sed 1,2d  | awk '{print $4}'); do git filter-branch --tag-n
 for i in $(cat $1);    do git filter-branch --tag-name-filter cat --index-filter  "git rm -r --cached --ignore-unmatch $i"   --prune-empty -f -- --all;  done;
 
 ```
+
+* Run remove_git.sh and wait ... all objects are destroyed 
+
+
+## After the objects' destruction  
+
+Update repo : 
+```
+git push origin --force --all
+```
+
 
 ## License
 
