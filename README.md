@@ -27,8 +27,7 @@ In order to delete all unused objects in a repo:
 
 ```
 sh check_git.sh 100 > toremove; 
-#here checking the 100 objects and delete someone if I want to preserve it 
-sh remove_git.sh toremove  #Remove all object in toremove file 
+sh remove_git.sh toremove  #After the check files in toremove file, remove all objects
 ```
 Repeat untile you're not satisfied about the cleaning of your repo
 
