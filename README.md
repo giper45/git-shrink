@@ -11,14 +11,16 @@ Download :
 ```
 git clone https://github.com/giper45/git-shrink.git    
 ```
-Then copy  
+Then copy   in your repo in order to use
 
+## Destroy max size objects in you repo
 
+Run : 
 ```
 sh check_git.sh numObj 
 ``` 
 
-give a list of top size numObj objects in your repo (default numObj = 10 ). 
+It gives a list of top size numObj objects in your repo (default numObj = 10 ). 
 
 In order to delete all unused objects in a repo: 
 * copy check_git.sh and remove_git.sh in the repo to clean .   
@@ -30,6 +32,24 @@ sh check_git.sh 100 > toremove;
 sh remove_git.sh toremove  #After the check files in toremove file, remove all objects
 ```
 Repeat untile you're not satisfied about the cleaning of your repo
+
+
+## Completely remove objects 
+
+* Get all the objects in your repo    
+```
+
+* Get all the objects in your repo    
+
+* Modify remove_git.sh uncommenting the second for loop : 
+```
+#Uncomment this for use with check_git.sh to remove max size objects
+for i in $(cat $1  | sed 1,2d  | awk '{print $4}'); do git filter-branch --tag-name-filter cat --index-filter  "git rm -r --cached --ignore-unmatch $i"   --prune-empty -f -- --all;  done; 
+
+#Uncomment this for get the first value (to remove all the objects) 
+for i in $(cat $1);    do git filter-branch --tag-name-filter cat --index-filter  "git rm -r --cached --ignore-unmatch $i"   --prune-empty -f -- --all;  done;
+
+```
 
 ## License
 
