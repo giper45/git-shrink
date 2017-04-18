@@ -24,7 +24,8 @@ In order to delete all unused objects give this command, and save in local ,  ch
 ```
 sh check_git.sh 100 > toremove; 
 // here checking the 100 objects and delete someone if I want to preserve it 
-sh clean_git.sh toremove 
+sh remove_git.sh toremove  #Remove all object in toremove file 
+
 
 
 
@@ -41,7 +42,7 @@ give
 
 ```
 Give examples
-```
+
 
 
 
