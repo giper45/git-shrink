@@ -45,7 +45,7 @@ git rev-list --objects --all  > toremove
 * Modify remove_git.sh uncommenting the second for loop : 
 ```
 #Uncomment this for use with check_git.sh to remove max size objects
-for i in $(cat $1  | sed 1,2d  | awk '{print $4}'); do git filter-branch --tag-name-filter cat --index-filter  "git rm -r --cached --ignore-unmatch $i"   --prune-empty -f -- --all;  done; 
+#for i in $(cat $1  | sed 1,2d  | awk '{print $4}'); do git filter-branch --tag-name-filter cat --index-filter  "git rm -r --cached --ignore-unmatch $i"   --prune-empty -f -- --all;  done; 
 
 #Uncomment this for get the first value (to remove all the objects) 
 for i in $(cat $1);    do git filter-branch --tag-name-filter cat --index-filter  "git rm -r --cached --ignore-unmatch $i"   --prune-empty -f -- --all;  done;
